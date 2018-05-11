@@ -22,5 +22,6 @@ docker run \
     -e MYSQL_ROOT_PASSWORD=secret \
     -v ~/code/myapp/data:/var/lib/mysql \
     -v ~/code/myapp/logs:/var/log \
+    -p 3306:3306 \
     monooso/docker-mysql:latest
 ```
