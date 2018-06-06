@@ -4,14 +4,11 @@ My standard MySQL Dockerfile for local development. Adds a very thin layer on to
 [docker-mysql]: https://hub.docker.com/_/mysql/
 
 ## Configuration ##
+The image defines a single volume, `/var/lib/mysql`, which is used to store the database files.
 
-### Volumes ###
-The image defines two volumes:
+If you're using this container on a Mac, you'll probably need to specify the default user.
 
-1. `/var/lib/mysql`, which is where the container will store its database files.
-2. `/var/log`, which is where the container will write its log files.
-
-Example usage:
+Here's how that all looks in practice.
 
 ```bash
 docker run \
@@ -20,8 +17,8 @@ docker run \
     -e MYSQL_USER=dba \
     -e MYSQL_PASSWORD=dba \
     -e MYSQL_ROOT_PASSWORD=secret \
+    -u "$(id -u):$(id -g)"
     -v ~/code/myapp/data:/var/lib/mysql \
-    -v ~/code/myapp/logs:/var/log \
     -p 3306:3306 \
     monooso/docker-mysql:latest
 ```

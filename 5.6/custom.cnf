@@ -1,7 +1,4 @@
 [mysqld]
-# Log errors to the mapped directory.
-log-error=/var/log/error.log
-
 # Everything from this point on is lifted from here:
 # Source: https://github.com/morgo/mysql-compatibility-config/blob/master/mysql-56/mysql-minimal.cnf
 #
